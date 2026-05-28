@@ -7,8 +7,127 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="100" Margin="315,129,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="logo" Margin="10,10,10,10" Source="/logo.jpeg" Stretch="Fill"/>
+
+        <!--  image -->
+        <Image x:Name="logo" 
+            
+            Source="/logo.jpeg"
+                
+                />
+
+
+        <!-- welcome message-->
+        <TextBlock
+                Text="Welcome to the Cyber Security Awereness Chatbot"
+                TextAlignment="Center"
+                Margin="0,10,0,243"
+            FontSize="30"
+            Foreground="Red"
+                FontFamily="Bauhaus 93"
+          
+                />
+        <TextBlock  
+            Text="Please Click Button to Continue"
+    TextAlignment="Center"
+            FontSize="30"
+            FontFamily="Bauhaus 93"
+            Margin="0,250,0,0"
+            
+    />
+        <!-- button to continue-->
+        <Button x:Name="Procede" 
+                Height="45"
+                Width="300"
+                Margin="0,200,0,0"
+                Content="Procede"
+                
+            Background="Red"
+                />
+       
+        <Grid x:Name="username_grid" Visibility="Hidden">
+
+
+            <!-- Hint message-->
+            <TextBlock
+                Text="Enter username"
+                Height="20"
+                Width="270"
+                TextAlignment="Justify"
+                Margin="0,30,0,0"
+                FontFamily="Arial Rounded MT Bold"
+                />
+
+            <!-- Enter/Prompt username-->
+            <TextBox
+                Height="40"
+                Width="270"
+                TextAlignment="Center"
+                Margin="0,100,0,0"
+                FontFamily="Arial Rounded MT Bold"
+                x:Name="usernames_input"
+                />
+
+            <!-- error message-->
+            <TextBlock
+         Text="please enter username to continue..."
+         Height="20"
+         Width="270"
+         TextAlignment="Justify"
+         Margin="0,180,0,0"
+         Foreground="Red"
+         FontFamily="Arial Rounded MT Bold"
+         />
+
+            <!-- button to submit name-->
+            <Button 
+        Height="40"
+        Width="270"
+        Margin="0,250,0,0"
+        Content="submit username"
+        Click="submit_name"
+        />
+
+        </Grid>
+
+        <!-- 
+            CHAT GRID
+            This grid handles all messaging and conversation-related features of the application.
+            It contains a ListView to display chat messages, a textbox for typing questions,
+            and a submit button to send the question to the chat.
+            Starting in a hidden state.
+        -->
+        <Grid x:Name="chat_grid" Visibility="Hidden">
+
+
+            <!-- List view to show messages show messages-->
+            <ListView  
+                x:Name="chats" 
+                Height="300"
+                Margin="0,0,0,120"
+                />
+
+
+            <!-- TextBox to prompt questions-->
+            <TextBox
+                x:Name="question"
+                Height="50"
+                Width="480"
+                Margin="0,300,300,0"
+                />
+
+            <!-- button to submit -->
+            <Button
+                Height="50"
+                Width="280"
+                Margin="490,300,0,0"
+                Content="send "
+                Click="send"
+                />
+
+        </Grid>
+
+    
+
 
     </Grid>
 </Window>
