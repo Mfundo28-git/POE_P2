@@ -25,7 +25,7 @@ namespace POE_P2
     {
 
 
-        // FIX 1: Single set of fields (removed duplicate declarations)
+       
         ArrayList reply = new ArrayList();
         ArrayList ignore = new ArrayList();
         User_Name check_name = new User_Name();
@@ -34,15 +34,16 @@ namespace POE_P2
         string pre_question = string.Empty;
         int counting = 0;
 
-        // FIX 2: Single constructor (was duplicated before)
+    
         public MainWindow()
         {
             InitializeComponent();
 
-            // FIX 3: Correct class name is "Responses", not "respond"
+       
             new Responses(reply, ignore);
 
-            // FIX 4: "voice_greeting" does not exist — using the correct "Greeting" class
+
+           //
             Greeting greet = new Greeting();
             greet.greet();
         }
@@ -50,7 +51,7 @@ namespace POE_P2
         // proceed event handler
         private void proceed(object sender, RoutedEventArgs e)
         {
-            // FIX 5: home_grid now exists in XAML (was missing before)
+           
             home_grid.Visibility = Visibility.Hidden;
             username_grid.Visibility = Visibility.Visible;
         }
@@ -131,7 +132,11 @@ namespace POE_P2
 
                     store_interests = string.Join(", ", currentInterests);
 
-                    if (found_interest && !string.IsNullOrWhiteSpace(store_interests)) ;
+                    if (found_interest && !string.IsNullOrWhiteSpace(store_interests))
+                    {
+                        File.WriteAllText("interested_topic.txt", username + " interested in: " + store_interests);
+                        error_method("ChatBot", "Got it! I'll remember you're interested in: " + store_interests);
+                    }
                     else
                     {
                         message += "Please specify what you're interested in (e.g., 'I am interested in cybersecurity')";
@@ -157,7 +162,16 @@ namespace POE_P2
                 }
             }
 
-            if (found && answers_found.Count > 0) ;
+            if (found && answers_found.Count > 0)
+            {
+                foreach (string answer in answers_found)
+                {
+                    // Remove the keyword prefix before displaying
+                    string[] parts = answer.Split(' ');
+                    string displayAnswer = string.Join(" ", parts.Skip(1));
+                    error_method("ChatBot", displayAnswer);
+                }
+            }
             else
             {
                 string[] fallbackMessages = {

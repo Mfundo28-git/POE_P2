@@ -26,7 +26,7 @@ namespace POE_P2
             if (!found)
             {
                 File.AppendAllText(filename, name + "\n");
-                error_method("ChatBot", "Hey " + name + " welcome to AI cybersecurity", chats);
+                error_method("ChatBot", "Hey " + name + " welcome to AI cybersecurity, How can i help you with today", chats);
             }
             else
             {

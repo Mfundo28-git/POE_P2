@@ -8,16 +8,19 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <!--  image -->
-        <Image x:Name="logo" 
+        <Grid x:Name="home_grid" Visibility="Visible">
+
+
+            <!--  image -->
+            <Image x:Name="logo" 
             
             Source="/logo.jpeg"
                 
                 />
 
 
-        <!-- welcome message-->
-        <TextBlock
+            <!-- welcome message-->
+            <TextBlock
                 Text="Welcome to the Cyber Security Awereness Chatbot"
                 TextAlignment="Center"
                 Margin="0,10,0,243"
@@ -26,7 +29,7 @@
                 FontFamily="Bauhaus 93"
           
                 />
-        <TextBlock  
+            <TextBlock  
             Text="Please Click Button to Continue"
     TextAlignment="Center"
             FontSize="30"
@@ -34,99 +37,68 @@
             Margin="0,250,0,0"
             
     />
-        <!-- button to continue-->
-        <Button x:Name="Procede" 
+            <!-- button to continue-->
+            <Button x:Name="Procede" 
                 Height="45"
                 Width="300"
                 Margin="0,200,0,0"
                 Content="Procede"
-                
+                Click="proceed"
             Background="Red"
                 />
-       
+        </Grid>
+        <!-- Username grid -->
         <Grid x:Name="username_grid" Visibility="Hidden">
+            <TextBox x:Name="usernames_input"
+                     Height="60"
+                     Background="YellowGreen"
+                     Margin="350,252,32,120" />
 
 
-            <!-- Hint message-->
-            <TextBlock
-                Text="Enter username"
-                Height="20"
-                Width="270"
-                TextAlignment="Justify"
-                Margin="0,30,0,0"
-                FontFamily="Arial Rounded MT Bold"
-                />
+            <TextBlock Text=" Username"
+                       FontSize="30"
+                       TextAlignment="Center"
+                       Margin="100,257,455,92"
+                       FontFamily="Bauhaus 93"/>
 
-            <!-- Enter/Prompt username-->
-            <TextBox
-                Height="40"
-                Width="270"
-                TextAlignment="Center"
-                Margin="0,100,0,0"
-                FontFamily="Arial Rounded MT Bold"
-                x:Name="usernames_input"
-                />
-
-            <!-- error message-->
-            <TextBlock
-         Text="please enter username to continue..."
-         Height="20"
-         Width="270"
-         TextAlignment="Justify"
-         Margin="0,180,0,0"
-         Foreground="Red"
-         FontFamily="Arial Rounded MT Bold"
-         />
-
-            <!-- button to submit name-->
-            <Button 
-        Height="40"
-        Width="270"
-        Margin="0,250,0,0"
-        Content="submit username"
-        Click="submit_name"
-        />
-
-        </Grid>
-
-        <!-- 
-            CHAT GRID
-            This grid handles all messaging and conversation-related features of the application.
-            It contains a ListView to display chat messages, a textbox for typing questions,
-            and a submit button to send the question to the chat.
-            Starting in a hidden state.
-        -->
-        <Grid x:Name="chat_grid" Visibility="Hidden">
-
-
-            <!-- List view to show messages show messages-->
-            <ListView  
-                x:Name="chats" 
-                Height="300"
-                Margin="0,0,0,120"
-                />
-
-
-            <!-- TextBox to prompt questions-->
-            <TextBox
-                x:Name="question"
-                Height="50"
-                Width="480"
-                Margin="0,300,300,0"
-                />
-
-            <!-- button to submit -->
+            <TextBlock Text="Please enter your username to continue"
+           TextAlignment="Center"
+           Margin="115,34,142,184"
+                       FontSize="30"
+           FontFamily="Bauhaus 93"
+           />
             <Button
-                Height="50"
-                Width="280"
-                Margin="490,300,0,0"
-                Content="send "
-                Click="send"
+                Height="45"
+                Width="270"
+                Margin="0,250,0,0"
+                Content="SUBMIT USERNAME"
+                Click="submit_name"
+                Background="Red"
+                Foreground="YellowGreen"
                 />
 
         </Grid>
 
-    
+        <!-- chat grid-->
+        <Grid x:Name="chat_grid"
+              Visibility="Hidden">
+            <ListView x:Name="chats"
+                        Height="300"
+                        Margin="0,0,0,120"
+                        />
+            <TextBox x:Name="question"
+                           Height="50"
+                           Width="480"
+                           Margin="0,300,300,0"
+                     Background="YellowGreen"
+                           />
+            <Button Height="50" Width="290"
+                    Margin="490,300,0,0"
+            Content="send"
+                    Click="send"
+                    Background="Red"/>
+
+        </Grid>
 
 
     </Grid>
